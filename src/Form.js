@@ -2,6 +2,9 @@ import axios from "axios";
 import { Button } from "bootstrap";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const Form = () => {
   const [username, setUserName] = useState("");
@@ -9,7 +12,7 @@ const Form = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [file, setFile] = useState();
-
+  const notify = () => toast("User Registered ,Go to Login Page");
   const handleImage = (e) => {
     setFile(e.target.files[0]);
   };
@@ -22,8 +25,10 @@ const Form = () => {
     formData.append('password',password);
     formData.append('image',file);
     axios.post("http://localhost:5173/register",formData)
-      .then((res) => console.log(res))
+      .then((res) => {console.log(res);
+        notify(); })
       .catch((err) => console.log(err));
+
   };
   console.log(file)
 
@@ -94,6 +99,7 @@ const Form = () => {
             Submit
           </button>
         </form>
+        <ToastContainer />
         <Link to="/">Login In</Link>
       </div>
     </div>
