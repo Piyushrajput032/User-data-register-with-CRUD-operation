@@ -67,7 +67,8 @@ const Details = () => {
               </div>
             </div>
             <div>
-                <Link to={`/edit/${datas[0].id}`} className="btn btn-info me-2">Edit</Link>
+                <Link to={`/edit/${datas[0]?.id}`} className="btn btn-info me-2">Edit</Link>
+
                 <Link to={`/home`} className="btn btn-primary ">Back</Link>
             </div>
           </div>

@@ -15,10 +15,9 @@ const Login = () => {
     .get(`http://localhost:5173/login/${password}`)
     .then((res) => setFetchData(res))
     .catch((err) => console.log(err));
-    if(fetchdata.data[0].name===name){
+    console.log(fetchdata.data[0].name)
+    if(fetchdata.data[0].name==name){
         navigate("/home")
-    }else{
-        setCheck(false)
     }
   
   };
